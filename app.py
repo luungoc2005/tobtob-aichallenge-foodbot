@@ -50,25 +50,25 @@ def message(data):
             if len(decoded) == 1:
                 socketio.emit('message', json.dumps({
                     'type': 'result',
-                    'data': decoded[0].data
+                    'data': decoded[0].data.decode("utf-8") 
                 }))
             else:
                 distances = []
                 prediction = dataObj['hand_prediction']
 
-                x2_norm = float(prediction.bbox[0]) / float(VIDEO_WIDTH)
-                y2_norm = float(prediction.bbox[1]) / float(VIDEO_HEIGHT)
+                x2_norm = float(prediction['bbox'][0]) / float(VIDEO_WIDTH)
+                y2_norm = float(prediction['bbox'][1]) / float(VIDEO_HEIGHT)
 
                 for decoded_item in decoded:
                     x1_norm = float(decoded_item.rect.left) / float(img.width)
                     y1_norm = float(decoded_item.rect.top) / float(img.height)
 
-                    distances.push(distance(x1_norm, y1_norm, x2_norm, y2_norm))
+                    distances.append(distance(x1_norm, y1_norm, x2_norm, y2_norm))
 
                 minIdx = np.argmin(distances)
                 socketio.emit('message', json.dumps({
                     'type': 'result',
-                    'data': decoded[minIdx].data
+                    'data': decoded[minIdx].data.decode("utf-8") 
                 }))
     
     except Exception:
