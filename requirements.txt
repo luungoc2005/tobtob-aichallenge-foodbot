@@ -71,7 +71,7 @@ pygame==1.9.3
 Pygments==2.2.0
 pylint==1.7.2
 pymagnitude==0.1.120
-PyPDF2==1.26.0
+PyPDF2==1.27.5
 python-dateutil==2.6.0
 python-magic==0.4.13
 pytube==9.1.0
