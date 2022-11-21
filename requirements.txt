@@ -90,7 +90,7 @@ six==1.12.0
 sqlparse==0.2.3
 static3==0.7.0
 statistics==1.0.3.5
-tensorflow==1.2.1
+tensorflow==2.9.3
 Theano==0.9.0
 torch==0.4.1
 tornado==4.5.2
